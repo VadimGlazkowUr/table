@@ -1,17 +1,15 @@
 import sys
 import sqlite3
 
-from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
-"""from main2 import Ui_MainWindow_1
-from addEditCoffeeForm import Ui_MainWindow_2"""
+from main2 import Ui_MainWindow_1
+from addEditCoffeeForm import Ui_MainWindow_2
 
 
-class MyWidget(QMainWindow):
+class MyWidget(QMainWindow, Ui_MainWindow_1):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main.ui', self)
-        # self.setupUi(self)
+        self.setupUi(self)
         self.setWindowTitle("Капучино")
         self.tableWidget.itemClicked.connect(self.item_changed)
         self.pushButton.clicked.connect(self.count)
@@ -56,14 +54,13 @@ class MyWidget(QMainWindow):
             sys.__excepthook__(cls, exception, traceback)
 
 
-class FormChage(QMainWindow):
+class FormChage(QMainWindow, Ui_MainWindow_2):
     def __init__(self, *inform, name_button, iks):
         self.inform = inform
         self.titles = iks.titles
         self.iks = iks
         super().__init__()
-        uic.loadUi('addEditCoffeeForm.ui', self)
-        # self.setupUi(self)
+        self.setupUi(self)
         self.pushButton.setText(name_button)
         self.pushButton.clicked.connect(self.count)
         self.setWindowTitle("")
@@ -148,6 +145,7 @@ class FormChage(QMainWindow):
                 cur.execute(finish_line)
                 con.commit()
                 con.close()
+                self.iks.datem = []
                 self.iks.display_table()
                 self.close()
 
