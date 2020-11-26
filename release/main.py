@@ -3,12 +3,15 @@ import sqlite3
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
+"""from main2 import Ui_MainWindow_1
+from addEditCoffeeForm import Ui_MainWindow_2"""
 
 
 class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('main.ui', self)
+        # self.setupUi(self)
         self.setWindowTitle("Капучино")
         self.tableWidget.itemClicked.connect(self.item_changed)
         self.pushButton.clicked.connect(self.count)
@@ -60,6 +63,7 @@ class FormChage(QMainWindow):
         self.iks = iks
         super().__init__()
         uic.loadUi('addEditCoffeeForm.ui', self)
+        # self.setupUi(self)
         self.pushButton.setText(name_button)
         self.pushButton.clicked.connect(self.count)
         self.setWindowTitle("")
